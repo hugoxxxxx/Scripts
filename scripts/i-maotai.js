@@ -156,9 +156,6 @@ if ($.isNode()) {
   for (let i = 0; i < CookieArr.length; i++) {
     $.userName = '', $.userId = '', $.mobile = '';
     console.log(`\n======== 账号${i + 1} ========\n`);
-    let randomInt = Math.floor(Math.random() * 300);  // 随机等待 0-300 秒
-    console.log(`随机等待 ${randomInt} 秒\n`);
-    await $.wait(randomInt * 1000);
     message += `账号 ${i + 1}  `
     let TOKEN = CookieArr[i].split(',');
     if (TOKEN.length === 2) {
@@ -171,6 +168,9 @@ if ($.isNode()) {
     await getLatestVersion();  // 获取最新版本
     await getUserInfo();  // 获取用户信息
     if ($.userName) {
+      let randomInt = Math.floor(Math.random() * 300);  // 随机等待 0-300 秒
+      console.log(`随机等待 ${randomInt} 秒\n`);
+      await $.wait(randomInt * 1000);
       for (const itemID of $.itemCodes) {
         $.itemId = itemID;
         $.shopIds = $.stock[$.itemId];
