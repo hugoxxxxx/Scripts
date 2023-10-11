@@ -1,6 +1,6 @@
 /*
  * 脚本名称：i 茅台
- * 更新时间：2023-10-10
+ * 更新时间：2023-10-11
  * 定时任务：17 9 * * *
  * 脚本说明：自动申购茅台酒，兼容 Node.js 和手机 NE 环境执行。
  * 环境变量：export MT_TOKENS="MT-Device-ID,MT-Token"  // 设备ID,用户TOKEN  多账号用 @ 隔开
@@ -156,6 +156,9 @@ if ($.isNode()) {
   for (let i = 0; i < CookieArr.length; i++) {
     $.userName = '', $.userId = '', $.mobile = '';
     console.log(`\n======== 账号${i + 1} ========\n`);
+    let randomInt = Math.floor(Math.random() * 300);  // 随机等待 0-300 秒
+    console.log(`随机等待 ${randomInt} 秒\n`);
+    await $.wait(randomInt);
     message += `账号 ${i + 1}  `
     let TOKEN = CookieArr[i].split(',');
     if (TOKEN.length === 2) {
