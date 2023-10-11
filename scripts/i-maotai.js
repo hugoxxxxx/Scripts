@@ -158,7 +158,7 @@ if ($.isNode()) {
     console.log(`\n======== 账号${i + 1} ========\n`);
     let randomInt = Math.floor(Math.random() * 300);  // 随机等待 0-300 秒
     console.log(`随机等待 ${randomInt} 秒\n`);
-    await $.wait(randomInt);
+    await $.wait(randomInt * 1000);
     message += `账号 ${i + 1}  `
     let TOKEN = CookieArr[i].split(',');
     if (TOKEN.length === 2) {
